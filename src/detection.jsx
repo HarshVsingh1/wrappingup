@@ -86,7 +86,7 @@ function Detection() {
   // Main function
   const runCoco = async () => {
     const net = await cocossd.load();
-    console.log("Handpose model loaded.");
+    console.log("Trained model loaded.");
     //  Loop and detect hands
     setInterval(() => {
       detect(net);
@@ -94,16 +94,17 @@ function Detection() {
   };
 
   const detect = async (net) => {
-    // Check data is available
+    // Check data is available 
     if (
       typeof webcamRef.current !== "undefined" &&
       webcamRef.current !== null &&
       webcamRef.current.video.readyState === 4
     ) {
-      // Get Video Properties
+      // Get Video Properties 
       const video = webcamRef.current.video;
       const videoWidth = webcamRef.current.video.videoWidth;
-      const videoHeight = webcamRef.current.video.videoHeight;
+      const videoHeight = webcamRef.current.video.videoHeight; 
+
 
       // Set video width
       webcamRef.current.video.width = videoWidth;
@@ -124,7 +125,7 @@ function Detection() {
        if(obj && obj.length > 0  && obj[0].class !== undefined ){
         console.log(obj[0].class)
 
-        setItem(obj[0].class)
+        setItem(obj[0].class) 
         setAccuracy(Math.floor((obj[0].score)*100))
 
        Material.forEach((material) => {
